@@ -1,36 +1,35 @@
-// file: /prompts/promptUtils.js
 export function getSystemPrompt() {
   return {
     role: "system",
-    content: "You are a helpful assistant that specializes in generating creative pet names.",
+    content: "You are a world-class chef specializing in creating creative fusion dishes by blending different cuisines, tailored to the user's desires.",
   };
 }
 
 export function getUserPrompt(input) {
   return {
     role: "user",
-    content: `Generate a creative pet name and short description for a ${input}.`,
+    content: `Based on the following user request, generate:\n- A Fusion Dish Name\n- A Short Summary describing the fusion idea.\n\nUser Request: "${input}"`,
   };
 }
 
 export function getFunctions() {
   return [
     {
-      name: "generate_pet_name",
-      description: "Generate a pet name for an animal.",
+      name: "generate_fusion_cuisine_idea",
+      description: "Generate a fusion cuisine dish idea based on user request.",
       parameters: {
         type: "object",
         properties: {
-          animalPetName: {
+          fusionDishName: {
             type: "string",
-            description: "The generated pet name for the animal",
+            description: "Name of the fusion dish."
           },
-          description: {
+          fusionIdeaSummary: {
             type: "string",
-            description: "The generated explanation of the pet name",
-          },
+            description: "Short summary explaining the fusion concept."
+          }
         },
-        "required": ["animalPetName", "description"]
+        required: ["fusionDishName", "fusionIdeaSummary"]
       },
     },
   ];
